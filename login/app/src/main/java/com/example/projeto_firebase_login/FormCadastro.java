@@ -6,13 +6,26 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Color;
 import android.hardware.biometrics.BiometricPrompt;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class FormCadastro extends AppCompatActivity {
 
@@ -52,7 +65,7 @@ public class FormCadastro extends AppCompatActivity {
         String email = edit_email.getText().toString();
         String senha = edit_senha.getText().toString();
 
-        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, senha).addOnCompleteListener(new OnCompletionListener<BiometricPrompt.AuthResult>(){
+        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, senha).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task){
 
@@ -68,13 +81,13 @@ public class FormCadastro extends AppCompatActivity {
                     String erro;
                     try {
                         throw task.getException();
-                    }catch (FirebaseAuthWeakPassordException e){
+                    }catch (FirebaseAuthWeakPasswordException e){
                         erro = "Digite uma senha no minimo 6 caracteres";
-                    }catch (FirebaseAuthUserCollisiionException e){
+                    }catch (FirebaseAuthUserCollisionException e){
                         erro = "Essa conta já foi cadastrada";
                     }catch (FirebaseAuthInvalidCredentialsException e){
                         erro = "E-mail inválido";
-                    }catch (Eception e){
+                    }catch (Exception e){
                         erro = "Erro ao cadastrar usuário";
                     }
 
@@ -102,13 +115,13 @@ public class FormCadastro extends AppCompatActivity {
         documentReference.set(usuarios).addOnSuccessListener(new OnSuccessListener<Void>(){
             @Override
             public void onSuccess(Void aVoid){
-                log.d("db", "Sucesso ao salvar os dados");
+                Log.d("db", "Sucesso ao salvar os dados");
             }
         })
-        .ddOnFailureListener(new OnFailureListener(){
+        .addOnFailureListener(new OnFailureListener(){
             @Override
             public void onFailure(@NonNull Exception e){
-                log.d("db_error", "Erro ao salvar os dados" + e.toString());
+                Log.d("db_error", "Erro ao salvar os dados" + e.toString());
             }
         } );
 
