@@ -1,4 +1,4 @@
-package com.example.login;
+package com.example.projeto_firebase_login;
 
 import androidx.appcompat.app.AppCompatActivity;
 

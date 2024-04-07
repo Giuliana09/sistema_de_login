@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">login</string>
+    <string name="app_name">Projeto-FireBase-Login</string>
+    <string name="entrar">Entrar</string>
+    <string name="text_cadastro">Crie uma conta clicando aqui</string>
+    <string name="title_cadastro">Cadastra-se</string>
+
 </resources>

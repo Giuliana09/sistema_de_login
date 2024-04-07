@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "415504611193",
-    "project_id": "tarefa-telalogin",
-    "storage_bucket": "tarefa-telalogin.appspot.com"
+    "project_number": "995660505569",
+    "project_id": "projetofirebaselogin-bc029",
+    "storage_bucket": "projetofirebaselogin-bc029.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:415504611193:android:6d4a468b55cabda77021a8",
+        "mobilesdk_app_id": "1:995660505569:android:b831e5f1bc2d9d3b5932a0",
         "android_client_info": {
-          "package_name": "com.example.login"
+          "package_name": "com.example.projeto_firebase_login"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAqpwqn_9_FdiUGQz1CN5w5nzH6Bk22RzY"
+          "current_key": "AIzaSyBm3IcrLP0ets0bnGcBFfeCLdoLVWyHXRQ"
         }
       ],
       "services": {
